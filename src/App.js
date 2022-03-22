@@ -1,23 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import Home from './components/Home';
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import PortfolioCard from './components/PortfolioCard';
+import StockCard from './components/StockCard';
+import StockList from './components/StockList';
+import PortfolioContainer from './containers/PortfolioContainer';
+import PortfolioForm from './components/PortfolioForm';
+import StockForm from './components/StockForm';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar />
+        <Header />
+        <Switch>
+          <Route path="/portfolios/new">
+            <PortfolioForm />
+          </Route>
+          <Route path="/portfolios/:id">
+            <PortfolioCard />
+          </Route>
+          <Route path="/portfolios">
+            <PortfolioContainer />
+          </Route>
+          <Route path="/stocks/new">
+            <StockForm />
+          </Route>
+          <Route path="/stocks/:id">
+            <StockCard />
+          </Route>
+          <Route path="/stocks">
+            <StockList />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
