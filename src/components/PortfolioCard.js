@@ -16,16 +16,18 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
     const finalPortfolio = portfolio ? portfolio : portfolioObj
     if (!finalPortfolio) return <h1>Loading...</h1>
 
-    const handleDeleteClick = () => { 
-        fetch(`http://localhost:3000/portfolios/${portfolio.id}`, {
+    const deletePortfolio = () => { 
+        fetch(`http://localhost:9292/portfolios/${finalPortfolio.id}`, {
             method: "DELETE",
         });
+        onDelete(finalPortfolio.id);
      }
+
   return (
     <div>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
         <button onClick={onUpdate}>Rename Portfolio</button>
-        <button onClick={handleDeleteClick}>Delete Portfolio</button>
+        <button onClick={deletePortfolio}>Delete Portfolio</button>
     </div>
   )
 }

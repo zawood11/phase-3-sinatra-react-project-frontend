@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const PortfolioForm = ({ onPortfolioFormSubmit }) => {
-  
+
     const [portfolio, setPortfolio] = useState({
         name: ""
     });
@@ -19,7 +20,7 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
     const handleSubmit = (e) => { 
         e.preventDefault();
         
-        const newPortfolio = {
+        let newPortfolio = {
             name: portfolio.name
         }
 
@@ -30,11 +31,12 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
             },
             body: JSON.stringify(newPortfolio)
         })
+        .then(res => res.json())
+        .then(data => onPortfolioFormSubmit(data))
         .then(() => history.push("/portfolios"))
         
-        onPortfolioFormSubmit(newPortfolio);
         setPortfolio({
-            name:""
+            name: ""
         });
      } 
     return (

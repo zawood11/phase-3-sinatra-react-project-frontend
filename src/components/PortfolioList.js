@@ -3,7 +3,7 @@ import PortfolioCard from './PortfolioCard'
 
 const PortfolioList = ({ portfolios, onDelete, onUpdate }) => {
   
-    const renderPortfolios = portfolios.map(portfolio => <PortfolioCard key={portfolio.id} portfolio={portfolio} onDelete={onDelete} onUpdate={onUpdate} />)
+    const renderPortfolios = portfolios.map((portfolio, index) => <PortfolioCard key={index} portfolio={portfolio} onDelete={onDelete} />)
 
     return (
     <div>{renderPortfolios}</div>
