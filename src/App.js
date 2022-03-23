@@ -25,9 +25,7 @@ function App() {
           <Route path="/stocks/new"><StockForm /></Route>
           <Route path="/stocks/:id"><StockCard /></Route>
           <Route path="/stocks"><StockContainer /></Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/"><Home /></Route>
         </Switch>
       </Router>
     </div>

@@ -32,7 +32,7 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
             body: JSON.stringify(newPortfolio)
         })
         .then(res => res.json())
-        .then(data => onPortfolioFormSubmit(data))
+        //.then(data => onPortfolioFormSubmit(data))
         .then(() => history.push("/portfolios"))
         
         setPortfolio({
@@ -45,6 +45,7 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor='name'>Portfolio Name</label>
                 <input onChange={handleChange} type="text" name="name" value={portfolio.name} required></input>
+                <input type="submit" value="Create Portfolio"/>
             </form>
         </>
         

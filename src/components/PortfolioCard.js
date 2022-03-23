@@ -22,11 +22,15 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
         });
         onDelete(finalPortfolio.id);
      }
+    
+    const updatePortfolio = () => { 
+        console.log(`${finalPortfolio.id} updated!`)
+     }
 
   return (
     <div>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
-        <button onClick={onUpdate}>Rename Portfolio</button>
+        <button onClick={updatePortfolio}>Rename Portfolio</button>
         <button onClick={deletePortfolio}>Delete Portfolio</button>
     </div>
   )

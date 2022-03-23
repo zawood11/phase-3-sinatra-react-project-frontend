@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import PortfolioList from '../components/PortfolioList'
 import PortfolioForm from '../components/PortfolioForm'
 
@@ -11,7 +12,7 @@ const PortfolioContainer = () => {
         .then(res => res.json())
         .then(data => setPortfolios(data))
     }, [])
-    
+  
     const handleNewPortfolio = (newPortfolio) => {
         setPortfolios([...portfolios, newPortfolio]);
         console.log(newPortfolio)
@@ -23,8 +24,9 @@ const PortfolioContainer = () => {
      }
     return (
         <>
-            <div>PortfolioContainer</div>
-            <div><PortfolioForm onPortfolioFormSubmit={handleNewPortfolio} /></div>
+            <h1>Your Portfolios</h1>
+            <Link to="/portfolios/new"><button>Add a portfolio</button></Link>
+            {/* <div><PortfolioForm onPortfolioFormSubmit={handleNewPortfolio} /></div> */}
             <PortfolioList portfolios={portfolios} onDelete={handleDeletePortfolio} />
         </>
   )
