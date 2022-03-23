@@ -1,8 +1,10 @@
 import React from 'react'
 
-const PortfolioCard = () => {
+const PortfolioCard = ({ portfolio }) => {
   return (
-    <div>PortfolioCard</div>
+    <div>
+        <h3>{portfolio.name}</h3>
+    </div>
   )
 }
 
