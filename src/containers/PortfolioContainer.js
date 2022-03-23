@@ -16,11 +16,19 @@ const PortfolioContainer = () => {
         const newPortfolioList = [...portfolios, newPortfolio];
         setPortfolios(newPortfolioList);
      }
+
+    const deletePortfolio = (portfolio) => { 
+        console.log("deleted")
+    }
+
+    const updatePortfolio = (portfolio) => { 
+        console.log("updated")
+     }
     return (
         <>
             <div>PortfolioContainer</div>
             <div><PortfolioForm onPortfolioFormSubmit={handleNewPortfolio} /></div>
-            <PortfolioList portfolios={portfolios} />
+            <PortfolioList portfolios={portfolios} onDelete={deletePortfolio} onUpdate={updatePortfolio}/>
         </>
   )
 }
