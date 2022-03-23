@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
-  const {id} = useParams()
+  const {id} = useParams();
   const [portfolioObj, setPortfolioObj] = useState(null);
 
   useEffect(() => {   
@@ -15,12 +15,17 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
 
     const finalPortfolio = portfolio ? portfolio : portfolioObj
     if (!finalPortfolio) return <h1>Loading...</h1>
-    
+
+    const handleDeleteClick = () => { 
+        fetch(`http://localhost:3000/portfolios/${portfolio.id}`, {
+            method: "DELETE",
+        });
+     }
   return (
     <div>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
         <button onClick={onUpdate}>Rename Portfolio</button>
-        <button onClick={onDelete}>Delete Portfolio</button>
+        <button onClick={handleDeleteClick}>Delete Portfolio</button>
     </div>
   )
 }
