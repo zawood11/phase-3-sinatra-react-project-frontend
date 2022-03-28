@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import StockList from '../components/StockList'
 
 const StockContainer = () => {
@@ -14,7 +15,8 @@ const StockContainer = () => {
   
     return (
         <>
-            <div>StockContainer</div>
+            <h1>Stock Database</h1>
+            <Link to="/stocks/new"><button>Add stock</button></Link>
             <StockList stocks={stocks} />
         </>
   )

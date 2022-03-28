@@ -15,12 +15,12 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
             ...portfolio,
             [e.target.name]: e.target.value
         })
-        
      }
+
     const handleSubmit = (e) => { 
         e.preventDefault();
         
-        let newPortfolio = {
+        const newPortfolio = {
             name: portfolio.name
         }
 
@@ -31,7 +31,7 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
             },
             body: JSON.stringify(newPortfolio)
         })
-        .then(res => res.json())
+        //.then(res => res.json())
         //.then(data => onPortfolioFormSubmit(data))
         .then(() => history.push("/portfolios"))
         

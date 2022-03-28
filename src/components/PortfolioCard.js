@@ -30,7 +30,7 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
   return (
     <div>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
-        <button onClick={updatePortfolio}>Rename Portfolio</button>
+        <button onClick={updatePortfolio}>Edit Portfolio</button>
         <button onClick={deletePortfolio}>Delete Portfolio</button>
     </div>
   )
