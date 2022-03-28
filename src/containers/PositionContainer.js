@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PositionList from '../components/PositionList'
 
-const PositionContainer = () => {
+const PositionContainer = ({ portfolio }) => {
     const [positions, setPositions] = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const PositionContainer = () => {
     
   return (
     <>
-        <PositionList positions={positions} />
+        <PositionList positions={positions} portfolio={portfolio} />
     </>
   )
 }

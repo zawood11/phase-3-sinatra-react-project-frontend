@@ -1,9 +1,16 @@
-import React from 'react'
-import PortfolioCard from './PortfolioCard'
+import React, { useState, useEffect } from 'react'
 
 const PositionCard = ({ position }) => {
+    const [stock, setStock] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:9292/stocks/${position.stock_id}`)
+        .then(res => res.json())
+        .then(data => setStock(data))
+    }, [])
+
   return (
-    <div>ID: {position.id}: Portfolio ID: {position.portfolio_id}</div>
+    <div>{stock.symbol}: {stock.name}</div>
   )
 }
 

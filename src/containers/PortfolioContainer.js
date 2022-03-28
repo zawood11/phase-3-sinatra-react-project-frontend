@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PortfolioList from '../components/PortfolioList'
-import PortfolioForm from '../components/PortfolioForm'
 
 const PortfolioContainer = () => {
     const [portfolios, setPortfolios] = useState([]);

@@ -33,7 +33,7 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
         <div>
             <h4>Positions</h4>
-            <PositionContainer />
+            <PositionContainer portfolio={portfolio}/>
         </div>
         <div>
             <button onClick={updatePortfolio}>Edit Portfolio</button>
