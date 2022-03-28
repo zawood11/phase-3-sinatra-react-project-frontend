@@ -2,18 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PositionList from '../components/PositionList'
 
-const PositionContainer = ({ portfolio }) => {
-    const [positions, setPositions] = useState([]);
+const PositionContainer = ({ finalPortfolio }) => {
+  const [positions, setPositions] = useState([]);
+  //const [stocks, setStocks] = useState([]);
 
-    useEffect(() => {
-      fetch("http://localhost:9292/positions")
-      .then(res => res.json())
-      .then(data => setPositions(data))
-    }, [])
-    
+  useEffect(() => {
+    fetch("http://localhost:9292/positions")
+    .then(res => res.json())
+    .then(data => setPositions(data))
+  }, [])
+
+//   useEffect(() => {
+//     fetch("http://localhost:9292/stocks")
+//     .then(res => res.json())
+//     .then(data => setStocks(data))
+// }, [])
+
   return (
     <>
-        <PositionList positions={positions} portfolio={portfolio} />
+        <PositionList finalPortfolio={finalPortfolio} positions={positions} />
     </>
   )
 }

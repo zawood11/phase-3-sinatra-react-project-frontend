@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import PositionContainer from '../containers/PositionContainer';
 
-const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
+const PortfolioCard = ({ portfolio, positions, stocks, onDelete, onUpdate }) => {
   const {id} = useParams();
   const [portfolioObj, setPortfolioObj] = useState(null);
 
@@ -33,7 +33,7 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
         <div>
             <h4>Positions</h4>
-            <PositionContainer portfolio={portfolio}/>
+            <PositionContainer finalPortfolio={finalPortfolio} />
         </div>
         <div>
             <button onClick={updatePortfolio}>Edit Portfolio</button>
