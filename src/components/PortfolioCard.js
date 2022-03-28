@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import PositionContainer from '../containers/PositionContainer';
 
 const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
   const {id} = useParams();
@@ -28,11 +29,18 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
      }
 
   return (
-    <div>
+      <>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
-        <button onClick={updatePortfolio}>Edit Portfolio</button>
-        <button onClick={deletePortfolio}>Delete Portfolio</button>
-    </div>
+        <div>
+            <h4>Positions</h4>
+            <PositionContainer />
+        </div>
+        <div>
+            <button onClick={updatePortfolio}>Edit Portfolio</button>
+            <button onClick={deletePortfolio}>Delete Portfolio</button>
+        </div>
+    </>
+
   )
 }
 

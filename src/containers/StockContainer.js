@@ -12,12 +12,15 @@ const StockContainer = () => {
         .then(data => setStocks(data))
     }, [])
     
-  
+    const handleDeleteStock = (stockID) => { 
+        const newStockList  = stocks.filter(stock => stock.id !== stockID);
+        setStocks(newStockList);
+     }
     return (
         <>
             <h1>Stock Database</h1>
             <Link to="/stocks/new"><button>Add stock</button></Link>
-            <StockList stocks={stocks} />
+            <StockList stocks={stocks} onDelete={handleDeleteStock}/>
         </>
   )
 }

@@ -16,20 +16,21 @@ const StockCard = ({ stock, onDelete }) => {
     const finalStock = stock ? stock : stockObj
     if (!finalStock) return <h1>Loading...</h1>
     
-    const handleDeleteClick = () => { 
+    const deleteStock = () => { 
         fetch(`http://localhost:9292/stocks/${stock.id}`, {
             method: "DELETE",
         });
+        onDelete(finalStock.id)
      }
 
   return (
     <div>
         <div style={{ display: "flex"}}>
             <h3><Link to={`/stocks/${finalStock.id}`}>{finalStock.symbol}</Link>: {finalStock.name}</h3>
-            <button style={{ justifyContent: "flex-end" }} onClick={handleDeleteClick}>Delete</button>
+            <button style={{ justifyContent: "flex-end" }} onClick={deleteStock}>Delete</button>
         </div>
         <div>
-            <h4>{finalStock.description}</h4>
+            <p>{finalStock.description}</p>
         </div>
     </div>
   )

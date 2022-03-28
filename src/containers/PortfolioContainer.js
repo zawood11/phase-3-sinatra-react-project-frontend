@@ -13,10 +13,10 @@ const PortfolioContainer = () => {
         .then(data => setPortfolios(data))
     }, [])
   
-    const handleNewPortfolio = (newPortfolio) => {
-        setPortfolios([...portfolios, newPortfolio]);
-        console.log(newPortfolio)
-     }
+    // const handleNewPortfolio = (newPortfolio) => {
+    //     setPortfolios([...portfolios, newPortfolio]);
+    //     console.log(newPortfolio)
+    //  }
     
     const handleDeletePortfolio = (portfolioID) => { 
         const newPortfolioList = portfolios.filter(portfolio => portfolio.id !== portfolioID);
