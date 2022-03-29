@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-// import PositionContainer from '../containers/PositionContainer';
+import PortfolioFormEdit from './PortfolioFormEdit';
 import PositionList from './PositionList';
 
 const PortfolioCard = ({ portfolio, positions, stocks, onDelete, onUpdate }) => {
   const {id} = useParams();
   const [portfolioObj, setPortfolioObj] = useState(null);
+  const [showPortfolioEdit, setShowPortfolioEdit] = useState(false)
 
   useEffect(() => {   
     if (!portfolio) {
@@ -27,12 +28,14 @@ const PortfolioCard = ({ portfolio, positions, stocks, onDelete, onUpdate }) => 
     
     const updatePortfolio = () => { 
         console.log(`${finalPortfolio.id} updated!`)
+        setShowPortfolioEdit(!showPortfolioEdit)
      }
 
   return (
       <>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
-        <button onClick={updatePortfolio}>Rename Portfolio</button>
+        <button onClick={updatePortfolio}>{showPortfolioEdit ? "Close" : "Rename Portfolio"}</button>
+        {showPortfolioEdit ? <PortfolioFormEdit finalPortfolio={finalPortfolio}/> : null}
         <div>
             <h4>Positions</h4>
             <PositionList finalPortfolio={finalPortfolio} />
