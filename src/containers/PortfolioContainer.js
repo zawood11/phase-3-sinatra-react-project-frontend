@@ -19,7 +19,6 @@ const PortfolioContainer = () => {
         <>
             <h1>Your Portfolios</h1>
             <Link to="/portfolios/new"><button>Add a portfolio</button></Link>
-            {/* <div><PortfolioForm onPortfolioFormSubmit={handleNewPortfolio} /></div> */}
             <PortfolioList portfolios={portfolios} onDelete={handleDeletePortfolio} />
         </>
   )

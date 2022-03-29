@@ -31,8 +31,6 @@ const PortfolioForm = ({ onPortfolioFormSubmit }) => {
             },
             body: JSON.stringify(newPortfolio)
         })
-        //.then(res => res.json())
-        //.then(data => onPortfolioFormSubmit(data))
         .then(() => history.push("/portfolios"))
         
         setPortfolio({
