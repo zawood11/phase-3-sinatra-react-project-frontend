@@ -30,7 +30,7 @@ const PortfolioFormEdit = ({ finalPortfolio }) => {
             },
             body: JSON.stringify(newPortfolio)
         })
-        .then(() => history.push("/portfolios"))
+         .then(() => history.go(0))
      } 
     return (
         <>

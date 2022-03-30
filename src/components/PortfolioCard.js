@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import PortfolioFormEdit from './PortfolioFormEdit';
 import PositionList from './PositionList';
 
-const PortfolioCard = ({ portfolio, positions, stocks, onDelete, onUpdate }) => {
+const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
   const {id} = useParams();
   const [portfolioObj, setPortfolioObj] = useState(null);
   const [showPortfolioEdit, setShowPortfolioEdit] = useState(false)
@@ -26,15 +26,14 @@ const PortfolioCard = ({ portfolio, positions, stocks, onDelete, onUpdate }) => 
         onDelete(finalPortfolio.id);
      }
     
-    const updatePortfolio = () => { 
-        console.log(`${finalPortfolio.id} updated!`)
+    const showEditForm = () => { 
         setShowPortfolioEdit(!showPortfolioEdit)
      }
 
   return (
       <>
         <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
-        <button onClick={updatePortfolio}>{showPortfolioEdit ? "Close" : "Rename Portfolio"}</button>
+        <button onClick={showEditForm}>{showPortfolioEdit ? "Close" : "Rename Portfolio"}</button>
         {showPortfolioEdit ? <PortfolioFormEdit finalPortfolio={finalPortfolio}/> : null}
         <div>
             <h4>Positions</h4>

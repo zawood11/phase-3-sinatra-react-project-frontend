@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
-const PortfolioForm = ({ onPortfolioFormSubmit }) => {
+const PortfolioForm = () => {
 
     const [portfolio, setPortfolio] = useState({
         name: ""
