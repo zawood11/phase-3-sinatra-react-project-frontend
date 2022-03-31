@@ -4,9 +4,9 @@ const Home = () => {
   return (
     <div>
         <div>
-            <img src={window.location.origin + "/logo512.png"} alt='default background image'></img>
+            <img src={window.location.origin + "/moneylogo.jpg"} alt='default background image'></img>
             <div>
-                <p>Our Mission is to make you rich!</p>
+                <p>Our application is designed to give you, the individual investor a starting point in managing your personal investment decisions. Manage different portfolios. Add stocks and price information to your personal database via an API integration with AlphaVantage. Use these resources for your own research and due diligence.</p>
             </div>
         </div>
     </div>

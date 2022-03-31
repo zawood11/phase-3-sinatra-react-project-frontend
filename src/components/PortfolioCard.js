@@ -36,18 +36,17 @@ const PortfolioCard = ({ portfolio, onDelete, onUpdate }) => {
       setShowNewPositionForm(!showNewPositionForm)
      }
   return (
-      <>
-        <h3><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h3>
-        <button onClick={showEditForm}>{showPortfolioEdit ? "Close" : "Rename Portfolio"}</button>
+      <div class="card">
+        <h2><Link to={`/portfolios/${finalPortfolio.id}`}>{finalPortfolio.name}</Link></h2>
+        <button style={{ backgroundColor: "mediumslateblue", fontSize: "14px"}} onClick={showEditForm}>{showPortfolioEdit ? "Close" : "Rename Portfolio"}</button>
         {showPortfolioEdit ? <PortfolioFormEdit finalPortfolio={finalPortfolio}/> : null}
         <div>
-            <h4>Positions</h4>
-            <button onClick={showPositionForm}>{showNewPositionForm ? "Close" : "Add Position"}</button>
+            <button style={{ backgroundColor: "darkslateblue", fontSize: "14px"}} onClick={showPositionForm}>{showNewPositionForm ? "Close" : "Add Position"}</button>
             {showNewPositionForm ? <PositionForm finalPortfolio={finalPortfolio} /> : null}
             <PositionList finalPortfolio={finalPortfolio} />
         </div>
-        <button onClick={deletePortfolio}>Delete Portfolio</button>
-    </>
+        <button style={{ backgroundColor: "red", fontSize: "14px"}} onClick={deletePortfolio}>Delete Portfolio</button>
+    </div>
 
   )
 }

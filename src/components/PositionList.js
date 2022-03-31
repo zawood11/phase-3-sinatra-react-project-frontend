@@ -2,8 +2,14 @@ import React, { useState } from 'react'
 import PositionCard from './PositionCard'
 
 const PositionList = ({ finalPortfolio }) => {
+  const [positions, setPositions] = useState(finalPortfolio.positions)
 
-  const renderPositions = finalPortfolio.positions.map((position, index) => <PositionCard key={index} position={position} />)
+  const handlePositionDelete = (positionId) => { 
+    const newPositionList = positions.filter(position => position.id !== positionId);
+    setPositions(newPositionList);
+   }
+
+  const renderPositions = positions.map((position, index) => <PositionCard key={index} position={position} handlePositionDelete={handlePositionDelete} />)
     
   return (
     <>

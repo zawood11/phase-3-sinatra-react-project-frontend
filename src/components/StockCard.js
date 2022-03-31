@@ -67,17 +67,18 @@ const StockCard = ({ stock, onDelete }) => {
             </table>)
     }
   return (
-    <>
+    <div class="card">
         <div style={{ display: "flex" }}>
             <h3><Link to={`/stocks/${finalStock.id}`}>{finalStock.symbol}</Link>: {finalStock.name}</h3>
-            <button onClick={loadPriceData}>Load Price Data</button>
-            <button onClick={togglePriceData}>{showPriceData ? "Hide Price Data" : "Show Price Data"}</button>
-            <button style={{ justifyContent: "flex-end" }} onClick={deleteStock}>Delete</button>
+        </div>
+        <div style={{ display: "inline-flex", flexFlow: "row wrap" }}>
+            <button style={{ display: "inline-block", backgroundColor: "mediumslateblue" }} onClick={loadPriceData}>Load Price Data</button>
+            <button style={{ display: "inline-block", backgroundColor: "darkslateblue" }} onClick={togglePriceData}>{showPriceData ? "Hide Price Data" : "Show Price Data"}</button>
+            <button style={{ display: "inline-block", backgroundColor: "black" }} onClick={deleteStock}>Delete</button>
         </div>
             <p>{finalStock.description}</p>
             {showPriceData ? <PriceTable /> : null}
-            
-    </>
+    </div>
   )
 }
 
