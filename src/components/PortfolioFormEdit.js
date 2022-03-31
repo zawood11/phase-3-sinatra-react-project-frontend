@@ -11,7 +11,7 @@ const PortfolioFormEdit = ({ finalPortfolio }) => {
     
     const handleChange = (e) => { 
         setPortfolio({
-            ...portfolio,
+            ...finalPortfolio,
             [e.target.name]: e.target.value
         })
      }
@@ -30,7 +30,7 @@ const PortfolioFormEdit = ({ finalPortfolio }) => {
             },
             body: JSON.stringify(newPortfolio)
         })
-         .then(() => history.go(0))
+        .then(() => history.go(0))
      } 
     return (
         <>

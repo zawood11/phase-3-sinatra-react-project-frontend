@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 
 const StockCard = ({ stock, onDelete }) => {
     const {id} = useParams();
     const [stockObj, setStockObj] = useState(null);
     const [showPriceData, setShowPriceData] = useState(false)
+
+    const history = useHistory();
 
     useEffect(() => {   
         if (!stock) {
@@ -20,9 +22,19 @@ const StockCard = ({ stock, onDelete }) => {
     const togglePriceData = () => { 
         setShowPriceData(!showPriceData)
      }
-
+    
+    const loadPriceData = () => { 
+        fetch(`http://localhost:9292/prices_by_stock_id/${finalStock.id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: ""
+        })
+        .then(() => history.go(0))
+     }
     const deleteStock = () => { 
-        fetch(`http://localhost:9292/stocks/${stock.id}`, {
+        fetch(`http://localhost:9292/stocks/${finalStock.id}`, {
             method: "DELETE",
         });
         onDelete(finalStock.id)
@@ -41,7 +53,7 @@ const StockCard = ({ stock, onDelete }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {finalStock.prices.map(price => (
+                    {finalStock.prices.sort((a,b) => b.date > a.date ? 1:-1).map(price => (
                         <tr key={price.id}>
                             <td>{price.date}</td>
                             <td>{price.open}</td>
@@ -58,6 +70,7 @@ const StockCard = ({ stock, onDelete }) => {
     <>
         <div style={{ display: "flex" }}>
             <h3><Link to={`/stocks/${finalStock.id}`}>{finalStock.symbol}</Link>: {finalStock.name}</h3>
+            <button onClick={loadPriceData}>Load Price Data</button>
             <button onClick={togglePriceData}>{showPriceData ? "Hide Price Data" : "Show Price Data"}</button>
             <button style={{ justifyContent: "flex-end" }} onClick={deleteStock}>Delete</button>
         </div>

@@ -36,7 +36,6 @@ const StockForm = () => {
       method: "PATCH",
     })
     )
-  //.then(fetch(`http://localhost:9292/stocks/${data.id}`))
   .then(() => history.push("/stocks"))
 
     setStock({
