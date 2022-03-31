@@ -31,6 +31,7 @@ const StockForm = () => {
       body: JSON.stringify(newStock)
   })
   .then(res => res.json())
+  .catch((error) => alert(error))
   .then(data => 
     fetch(`http://localhost:9292/stocks/${data.id}`, {
       method: "PATCH",

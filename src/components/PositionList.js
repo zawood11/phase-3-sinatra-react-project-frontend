@@ -7,7 +7,6 @@ const PositionList = ({ finalPortfolio }) => {
     
   return (
     <>
-      <button>Add Position</button>
       <div>{renderPositions}</div>
     </>
   )
